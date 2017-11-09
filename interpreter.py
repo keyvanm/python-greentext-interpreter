@@ -106,3 +106,37 @@ with open("codewars.greentext") as gt_file:
                         raise ValueError
                     value = available_cast[var_type](value)
                 context[var_name] = value
+
+        elif re.match(narr__cmds['regex'], code):
+            chapter__match = re.match(chapter__narr__regex, code)
+            if chapter__match:
+                chapter_name = chapter__match.group('chapter_name')
+                chapters.append({
+                    'name': chapter_name,
+                    'levels': []
+                })
+
+            level__match = re.match(level__narr__regex, code)
+            if level__match:
+                level_name = level__match.group('level_name')
+                curr_chapter = chapters[-1]
+                curr_chapter['levels'].append({
+                    'name': level_name,
+                    'objectives': []
+                })
+
+            objective__match = re.match(objective__narr__regex, code)
+            if objective__match:
+                objective_name = objective__match.group('objective_name')
+                curr_chapter = chapters[-1]
+                curr_level = curr_chapter['levels'][-1]
+                curr_level['objectives'].append({
+                    'name': objective_name,
+                })
+
+        elif re.match(dialog__cmds['regex'], code):
+            pass
+        elif re.match(input__cmds['regex'], code):
+            pass
+        elif re.match(action__cmds['regex'], code):
+            pass
