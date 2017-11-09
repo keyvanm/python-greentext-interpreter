@@ -3,11 +3,11 @@ commands = {
         'regex': None,
         'types': {
             "single_line": {
-                'regex': r"(?P<script>.*)(?P<comment>\/\/.*)",
+                'regex': r"(?P<code>.*)(?P<comment>\/\/.*)",
                 'examples': [r"blah blah // start game", ]
             },
             "multi_line_1line": {
-                'regex': r"^\/\*.*\*\/",
+                'regex': r"^\/\*.*\*\/$",
                 'examples': [r"/* start tutorial chapter */", ]
             },
             "multi_line_start": {
