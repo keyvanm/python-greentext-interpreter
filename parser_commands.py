@@ -44,8 +44,8 @@ commands = {
                 'examples': ["\clear", ]
             },
             "assign": {
-                'regex': r"^\\assign(\s+\$(?P<var>\w+))(:(?P<type>\w+))?\s*=\s*(?P<value>\S.*)",
-                'examples': ["\assign $var = asdf", "\assign $var:str = asdf"]
+                'regex': r"^\\assign(\s+(?P<var>(\$|@)[\.\w]+))(:(?P<type>\w+))?\s*=\s*(?P<value>\S.*)",
+                'examples': ["\assign $var = asdf", "\assign $var:str = asdf", "\assign @player.name = $name", "\assign @player.age:int = 24"]
             },
         }
     },
