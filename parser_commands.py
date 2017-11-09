@@ -63,15 +63,11 @@ commands = {
         }
     },
     "output": {
-        "regex": r"^>",
+        "regex": r"^(>|!).*",
         "types": {
             "named_dialog": {
-                "regex": r"^>\s\[(?P<char_name>\w+)\]\s(?P<text>.*)",
-                "examples": ["> [diana] Hi!", ]
-            },
-            "unnamed_dialog": {
-                "regex": r"^>\s(?P<text>.*)",
-                "examples": ["> What's up?", ]
+                "regex": r"^>(\s\[(?P<char_name>\w+)\])?(\s(?P<text>.*))?",
+                "examples": [">", "> [diana]", "> lol", "> [diana] Hi!", ]
             },
             "console_output": {
                 "regex": r"^!\s(?P<text>.*)",
@@ -80,15 +76,11 @@ commands = {
         }
     },
     "input": {
-        "regex": r"^\$",
+        "regex": r"^\$.*",
         "types": {
-            "raw_input": {
-                "regex": r"^\$(\s\((?P<prompt>.*)\))?(\s(?P<var>\w+))?(:(?P<type>\w+))?",
-                "examples": ["$", "$ name", "$ (Please enter your name)", "$ (Please enter your name) name", ]
-            },
-            "mc_input": {
-                "regex": r"",
-                "examples": ["", ]
+            "input": {
+                "regex": r"^\$(\s\((?P<prompt>.*)\))?((\s(?P<var>\w+))(:(?P<type>\w+))?(\sfrom\s\[(?P<choices>.*)\])?)?",
+                "examples": ["$", "$ (Please enter your name)", "$ name", "$ (Please enter your name) name", "$ (Please enter your name) name:str", "$ (Please enter your name) name:int from [1|2|3|4]", "$ name:int from [1|2|3|4]"]
             },
         }
     }
