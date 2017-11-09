@@ -79,8 +79,8 @@ commands = {
         "regex": r"^\$.*",
         "types": {
             "input": {
-                "regex": r"^\$(\s\((?P<prompt>.*)\))?((\s(?P<var>\w+))(:(?P<type>\w+))?(\sfrom\s\[(?P<choices>.*)\])?)?",
-                "examples": ["$", "$ (Please enter your name)", "$ name", "$ (Please enter your name) name", "$ (Please enter your name) name:str", "$ (Please enter your name) name:int from [1|2|3|4]", "$ name:int from [1|2|3|4]"]
+                "regex": r"^\$(\s\((?P<prompt>.*)\))?((\s\$(?P<var>\w+))(:(?P<type>\w+))?(\sfrom\s\[(?P<choices>.*)\])?)?",
+                "examples": ["$", "$ (Please enter your name)", "$ $name", "$ (Please enter your name) $name", "$ (Please enter your name) $name:str", "$ (Please enter your name) $name:int from [1|2|3|4]", "$ $name:int from [1|2|3|4]"]
             },
         }
     },
