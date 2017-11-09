@@ -1,7 +1,12 @@
 import importlib
 import re
+import time
 
 from cmd_regex import commands
+
+DEFAULT_DELAY_TIME = 0.5
+
+DEFAULT_DELAY_TIME_UNIT = "s"
 
 comment__cmds = commands["comment"]
 exec__cmds = commands["exec"]
@@ -31,6 +36,13 @@ def comment_strip(line):
         code = match.group('code')
         return code.strip()
     return line
+
+
+def update(var, val, context):
+    if var not in context:
+        context[var] = val
+    else:
+        context[var].update(value)
 
 
 chapters = []
@@ -76,8 +88,41 @@ with open("codewars.greentext") as gt_file:
             if load__match:  # \load var from filename
                 var_name = load__match.group('var_name')
                 file_name = load__match.group('var_name')
-                value = importlib.import_module(var_name, package=file_name)
-                if var_name not in context:
-                    context[var_name] = value
+                if not file_name:
+                    file_name = var_name
+                value = getattr(importlib.import_module(var_name, package=file_name), var_name)
+                update(var_name, value, context)
+
+            delay__match = re.match(delay__command__regex, code)
+            if delay__match:  # \delay 1000ms
+                t = delay__match.group('time')
+                if not t:
+                    t = DEFAULT_DELAY_TIME
+                unit = delay__match.group('unit')
+                if not unit:
+                    unit = DEFAULT_DELAY_TIME_UNIT
+                if unit == "s":
+                    time_in_s = int(t)
+                elif unit == "ms":
+                    time_in_s = int(t) / 1000
                 else:
-                    context[var_name].update(value)
+                    raise ValueError
+                time.sleep(time_in_s)
+
+            clear__match = re.match(clear__command__regex, code)
+            if clear__match:  # \clear
+                pass
+
+            assign__match = re.match(assign__command__regex, code)
+            if assign__match:  # \assign var:int = 10
+                var_name = assign__match.group('var_name')
+                var_type = assign__match.group('type')
+                value = assign__match.group('value')
+
+                available_cast = {'str': str, 'int': int, 'bool': bool, 'list': list, 'set': set, 'float': float}
+                if var_type:
+                    if not var_type in available_cast:
+                        raise ValueError
+                    value = available_cast[var_type](value)
+
+                context[var_name] = value
