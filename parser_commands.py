@@ -36,8 +36,8 @@ commands = {
                 "examples": ["\load objects from objects.json", ]
             },
             "delay": {
-                "regex": r"^\\delay\s(?P<time>\d+)(?P<unit>\w+)",
-                "examples": ["\delay 100ms", ]
+                "regex": r"^\\delay(\s(?P<time>\d+)(?P<unit>\w+))?",
+                "examples": ["\delay", "\delay 100ms", ]
             },
             "clear": {
                 "regex": r"^\\clear",
