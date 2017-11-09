@@ -92,7 +92,7 @@ commands = {
         'regex': r"^\*.*",
         'types': {
             "request_task": {
-                'regex': r"^\*\s+@(?P<char_id>\w+)\s+requests\s+%(?P<task>\w+)",
+                'regex': r"^\*\s+@(?P<char_id>\w+)\s+requests\s+%(?P<task_id>\w+)",
                 'examples': [r"* @aaa requests %task1"]
             }
         }

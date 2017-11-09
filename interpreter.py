@@ -4,7 +4,7 @@ import importlib
 import re
 
 from cmd_regex_vars import *
-from interface import echo, get_input
+from interface import echo, get_input, show_task
 from utils import comment_strip, peek_line
 
 DEFAULT_DELAY_TIME = 0.5
@@ -170,7 +170,13 @@ with open("codewars.greentext") as gt_file:
                 context[var_name] = get_input(prompt, var_type, choices)
 
         elif re.match(action__cmds['regex'], code):
-            pass
+            request_task__match = re.match(request_task__action__regex, code)
+            if request_task__match:
+                char_id = request_task__match.group('char_id')
+                task_id = request_task__match.group('task_id')
+                char = characters[char_id]
+                task = tasks[task_id]
+                show_task(task)
 
         else:
             print(code)

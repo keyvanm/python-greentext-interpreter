@@ -23,3 +23,5 @@ def get_input(prompt, type, choices):
     return input("$ ")
 
 
+def show_task(task):
+    print(task['text'])

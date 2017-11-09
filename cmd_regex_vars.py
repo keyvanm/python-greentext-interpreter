@@ -27,3 +27,5 @@ console__output__regex = output__cmds['types']["console"]['regex']
 
 
 input__input__regex = input__cmds['types']["input"]['regex']
+
+request_task__action__regex =action__cmds['types']["request_task"]['regex']
