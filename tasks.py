@@ -1,4 +1,4 @@
-tasks = [
+tasks = {
     "question1": {
         'text': """
                 What is the output of this program?
@@ -9,4 +9,4 @@ tasks = [
                 """,
         'answer': 2
     }
-]
+}

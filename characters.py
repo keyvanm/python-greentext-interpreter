@@ -1,14 +1,14 @@
-characters = [
+characters = {
     "player": {
         "name": "unnamed",
-        "objects" = []
+        "objects": []
     },
     "assistant": {
         "name": "Diana",
-        "objects" = []
+        "objects": []
     },
     "asset1": {
         "name": "Ron",
         "objects": []
     },
-]
+}
