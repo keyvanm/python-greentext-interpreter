@@ -50,7 +50,7 @@ commands = {
         }
     },
     "narrative_structure": {
-        'regex': None,
+        'regex': r"^#+\s+.*",
         'types': {
             "chapter": {
                 'regex': r"^#\s+(?P<chapter_name>\w+)",

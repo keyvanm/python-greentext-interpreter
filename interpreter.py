@@ -2,29 +2,11 @@ import importlib
 import re
 import time
 
-from cmd_regex import commands
+from cmd_regex_vars import *
 
 DEFAULT_DELAY_TIME = 0.5
 
 DEFAULT_DELAY_TIME_UNIT = "s"
-
-comment__cmds = commands["comment"]
-exec__cmds = commands["exec"]
-narrative_structure__cmds = commands["narrative_structure"]
-dialog_output__cmds = commands["dialog_output"]
-input__cmds = commands["input"]
-action__cmds = commands["action"]
-
-multi_line_1line__comment__regex = comment__cmds['types']["multi_line_1line"]['regex']
-multi_line_start__comment__regex = comment__cmds['types']["multi_line_start"]['regex']
-multi_line_end__comment__regex = comment__cmds['types']["multi_line_end"]['regex']
-
-be__command__regex = exec__cmds['types']["be"]['regex']
-end__command__regex = exec__cmds['types']["end"]['regex']
-load__command__regex = exec__cmds['types']["load"]['regex']
-delay__command__regex = exec__cmds['types']["delay"]['regex']
-clear__command__regex = exec__cmds['types']["clear"]['regex']
-assign__command__regex = exec__cmds['types']["assign"]['regex']
 
 
 def comment_strip(line):
@@ -118,11 +100,9 @@ with open("codewars.greentext") as gt_file:
                 var_name = assign__match.group('var_name')
                 var_type = assign__match.group('type')
                 value = assign__match.group('value')
-
                 available_cast = {'str': str, 'int': int, 'bool': bool, 'list': list, 'set': set, 'float': float}
                 if var_type:
                     if not var_type in available_cast:
                         raise ValueError
                     value = available_cast[var_type](value)
-
                 context[var_name] = value

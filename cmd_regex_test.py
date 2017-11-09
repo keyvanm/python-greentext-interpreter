@@ -1,6 +1,6 @@
 import re
 
-from cmd_regex import commands
+from cmd_regex_dict import commands
 
 for cmd in commands:
     all_examples = []
