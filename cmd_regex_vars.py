@@ -6,6 +6,7 @@ narr__cmds = commands["narrative_structure"]
 output__cmds = commands["output"]
 input__cmds = commands["input"]
 action__cmds = commands["action"]
+conditional__cmds = commands["conditional"]
 
 multi_line_1line__comment__regex = comment__cmds['types']["multi_line_1line"]['regex']
 multi_line_start__comment__regex = comment__cmds['types']["multi_line_start"]['regex']
@@ -29,3 +30,8 @@ console__output__regex = output__cmds['types']["console"]['regex']
 input__input__regex = input__cmds['types']["input"]['regex']
 
 request_task__action__regex =action__cmds['types']["request_task"]['regex']
+
+if__conditional__regex = conditional__cmds['types']["if"]['regex']
+elif__conditional__regex = conditional__cmds['types']["elif"]['regex']
+else__conditional__regex = conditional__cmds['types']["else"]['regex']
+endif__conditional__regex = conditional__cmds['types']["endif"]['regex']

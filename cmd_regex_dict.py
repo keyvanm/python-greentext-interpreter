@@ -21,7 +21,7 @@ commands = {
         }
     },
     "exec": {
-        'regex': r"(?P<command>^\\\w+)(\s+(?P<args>.*))?",
+        'regex': r"^\\(?!if|else|elif)(?P<command>\w+)(\s+(?P<args>.*))?",
         'types': {
             "be": {
                 'regex': r"^\\be\s+(?P<me>me)\s*\=\s*@(?P<char_id>\w+)",
@@ -95,6 +95,27 @@ commands = {
                 'regex': r"^\*\s+@(?P<char_id>\w+)\s+requests\s+%(?P<task_id>\w+)",
                 'examples': [r"* @aaa requests %task1"]
             }
+        }
+    },
+    "conditional": {
+        'regex': r"^\\(if|else|elif)(\s+(?P<args>.*))?",
+        'type': {
+            "if": {
+                'regex': r"",
+                'examples': []
+            },
+            "elif": {
+                'regex': r"",
+                'examples': []
+            },
+            "else": {
+                'regex': r"",
+                'examples': []
+            },
+            "endif": {
+                'regex': r"",
+                'examples': []
+            },
         }
     }
 }

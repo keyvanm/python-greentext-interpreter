@@ -178,6 +178,12 @@ with open("codewars.greentext") as gt_file:
                 task = tasks[task_id]
                 show_task(task)
 
+        elif re.match(conditional__cmds['regex'], code):
+            if_conditional__match = re.match(if__conditional__regex, code)
+            elif_conditional__match = re.match(elif__conditional__regex, code)
+            else_conditional__match = re.match(else__conditional__regex, code)
+            endif_conditional__match = re.match(endif__conditional__regex, code)
+
         else:
             print(code)
             raise SyntaxError
