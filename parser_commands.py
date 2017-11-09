@@ -66,10 +66,10 @@ commands = {
             },
         }
     },
-    "output": {
+    "dialog_output": {
         'regex': r"^(>|!).*",
         'types': {
-            "named_dialog": {
+            "dialog": {
                 'regex': r"^>(\s+\[(?P<char_name>\w+)\])?(\s+(?P<text>.*))?",
                 'examples': [">", "> [diana]", "> lol", "> [diana] Hi!", ]
             },
