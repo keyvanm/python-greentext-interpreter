@@ -4,12 +4,12 @@
 #object
 %task
 
+\exec_command *args <*optional_args>
 ! print this to console
 > <[char_id]> sentence
 $ <(prompt)> <var<:type>> <from [choices|delimited|by|pipe|char|>
 * @char_id verbs %task_id
 // comment
-\exec_command *args <*optional_args>
 
 */
 
