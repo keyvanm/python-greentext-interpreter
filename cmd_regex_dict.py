@@ -66,14 +66,14 @@ commands = {
             },
         }
     },
-    "dialog_output": {
+    "output": {
         'regex': r"^(>|!).*",
         'types': {
             "dialog": {
                 'regex': r"^>(\s+\[(?P<char_id>\w+)\])?(\s+(?P<text>.*))?",
                 'examples': [r">", r"> [diana]", r"> lol", r"> [diana] Hi!", ]
             },
-            "console_output": {
+            "console": {
                 'regex': r"^!\s+(?P<text>.*)",
                 'examples': [r"! Loading...", ]
             },

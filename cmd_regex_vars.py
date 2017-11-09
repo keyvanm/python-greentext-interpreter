@@ -3,7 +3,7 @@ from cmd_regex_dict import commands
 comment__cmds = commands["comment"]
 exec__cmds = commands["exec"]
 narr__cmds = commands["narrative_structure"]
-dialog__cmds = commands["dialog_output"]
+output__cmds = commands["output"]
 input__cmds = commands["input"]
 action__cmds = commands["action"]
 
@@ -21,3 +21,9 @@ assign__command__regex = exec__cmds['types']["assign"]['regex']
 chapter__narr__regex = narr__cmds['types']["chapter"]['regex']
 level__narr__regex = narr__cmds['types']["level"]['regex']
 objective__narr__regex = narr__cmds['types']["objective"]['regex']
+
+dialog__output__regex = output__cmds['types']["dialog"]['regex']
+console__output__regex = output__cmds['types']["console"]['regex']
+
+
+input__input__regex = input__cmds['types']["input"]['regex']
