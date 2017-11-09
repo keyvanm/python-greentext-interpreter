@@ -11,7 +11,7 @@ $ input
 /*
 
 
-\load objects from objects
+// \load objects from objects
 \load characters
 \load tasks
 
@@ -30,11 +30,11 @@ $ (Press n to continue)
 # Tutorial  // start chapter
 ## Intro  // start level
 ### Accept mission  // start objective
-> [diana] This is Diana, your handler for this mission.
+> [assistant] This is {@assistant.name}, your handler for this mission.
 > What is your name?
 $ name
 \assign @player.name = name
-> [diana] Good to meet you, {@player.name}
+> [assistant] Good to meet you, {@player.name}
 > Your first mission should you choose to accept it, is to talk to our asset, and convince him to reveal intel.
 $ (Press Enter to accept mission)
 > [player] I accept.
