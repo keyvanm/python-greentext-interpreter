@@ -1,22 +1,15 @@
-import importlib
-import re
 import time
 
+import importlib
+import re
+
 from cmd_regex_vars import *
+from interface import echo
+from utils import comment_strip, peek_line
 
 DEFAULT_DELAY_TIME = 0.5
 
 DEFAULT_DELAY_TIME_UNIT = "s"
-
-
-def comment_strip(line):
-    comment__single_line__regex = comment__cmds['types']["single_line"]['regex']
-
-    match = re.match(comment__single_line__regex, line)
-    if match:
-        code = match.group('code')
-        return code.strip()
-    return line
 
 
 def update(var, val, context):
@@ -26,18 +19,25 @@ def update(var, val, context):
         context[var].update(value)
 
 
+objects = {}
+characters = {}
+tasks = {}
 chapters = []
 context = {
-    'objects': {},
-    'characters': {},
-    'tasks': {},
+    'objects': objects,
+    'characters': characters,
+    'tasks': tasks,
     'chapters': chapters
 }
 
 with open("codewars.greentext") as gt_file:
     player_id = None
+    last_char_talking = None
 
-    for line in gt_file:
+    gt_lines = gt_file.readlines()
+    gt_iter = enumerate(gt_lines)
+
+    for line_no, line in gt_iter:
         line = line.strip()
         # getting rid of multi line comments
         multi_line_1line__matcher = re.compile(multi_line_1line__comment__regex)  # /* comment */
@@ -47,9 +47,9 @@ with open("codewars.greentext") as gt_file:
         if multi_line_1line__matcher.match(line):
             continue
         if multi_line_start__matcher.match(line):
-            line = gt_file.readline()
+            line_no, line = next(gt_iter)
             while not multi_line_end__matcher.match(line):
-                line = gt_file.readline()
+                line_no, line = next(gt_iter)
 
         # strip the line and remove inline comments
         code = comment_strip(line)  # code  // comment
@@ -93,7 +93,7 @@ with open("codewars.greentext") as gt_file:
 
             clear__match = re.match(clear__command__regex, code)
             if clear__match:  # \clear
-                pass
+                print('\n'*15)
 
             assign__match = re.match(assign__command__regex, code)
             if assign__match:  # \assign var:int = 10
@@ -105,7 +105,12 @@ with open("codewars.greentext") as gt_file:
                     if not var_type in available_cast:
                         raise ValueError
                     value = available_cast[var_type](value)
-                context[var_name] = value
+                if var_name.startswith('@'):
+                    dict_path = var_name[1:].split('.')
+
+                    characters[dict_path[0]][dict_path[1]] = value  # TODO
+                else:
+                    context[var_name] = value
 
         elif re.match(narr__cmds['regex'], code):
             chapter__match = re.match(chapter__narr__regex, code)
@@ -134,11 +139,33 @@ with open("codewars.greentext") as gt_file:
                     'name': objective_name,
                 })
 
-        elif re.match(dialog__cmds['regex'], code):
-            pass
+        elif re.match(output__cmds['regex'], code):
+            dialog__match = re.match(dialog__output__regex, code)
+            if dialog__match:
+                char_id = dialog__match.group('char_id')
+                text = dialog__match.group('text')
+                next_isnt_input = re.match(input__cmds['regex'], comment_strip(peek_line(gt_lines, line_no))) is None
+                if not char_id:
+                    if not last_char_talking:
+                        raise Exception
+                    char_id = last_char_talking
+                    echo(None, text, wait_for_next=next_isnt_input)
+                else:
+                    echo(characters[char_id], text, wait_for_next=next_isnt_input)
+                last_char_talking = char_id
+
+            console__match = re.match(console__output__regex, code)
+            if console__match:
+                text = console__match.group('text')
+                print(text)
 
         elif re.match(input__cmds['regex'], code):
-            pass
+            input__match = re.match(input__input__regex, code)
+            if input__match:
+                prompt = input__match.group('prompt')
+                var_name = input__match.group('var_name')
+                type = input__match.group('type')
+                choices = input__match.group('choices')
 
         elif re.match(action__cmds['regex'], code):
             pass
