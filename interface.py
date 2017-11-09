@@ -19,7 +19,7 @@ def echo(char, text, wait_for_next=True):
 
 def get_input(prompt, type, choices):
     if prompt:
-        return input("$ ({})".format(prompt))
+        return input("$ ({}) ".format(prompt))
     return input("$ ")
 
 

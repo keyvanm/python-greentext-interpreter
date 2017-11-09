@@ -21,7 +21,7 @@ commands = {
         }
     },
     "exec": {
-        'regex': r"^\\(?!if|else|elif)(?P<command>\w+)(\s+(?P<args>.*))?",
+        'regex': r"^\\(?!if|else|elif|endif)(?P<command>\w+)(\s+(?P<args>.*))?",
         'types': {
             "be": {
                 'regex': r"^\\be\s+(?P<me>me)\s*\=\s*@(?P<char_id>\w+)",
@@ -45,7 +45,8 @@ commands = {
             },
             "assign": {
                 'regex': r"^\\assign(\s+(?P<var_name>(@)?[\.\w]+))(:(?P<type>\w+))?\s*=\s*(?P<value>\S.*)",
-                'examples': [r"\assign var = asdf", r"\assign var:str = asdf", r"\assign @player.name = $name", r"\assign @player.age:int = 24"]
+                'examples': [r"\assign var = asdf", r"\assign var:str = asdf", r"\assign @player.name = $name",
+                             r"\assign @player.age:int = 24"]
             },
         }
     },
@@ -83,8 +84,11 @@ commands = {
         'regex': r"^\$.*",
         'types': {
             "input": {
-                'regex': r"^\$(\s+\((?P<prompt>.*)\))?((\s+(?P<var_name>\w+))(:(?P<type>\w+))?(\s+from\s+\[(?P<choices>.*)\])?)?",
-                'examples': [r"$", r"$ (Please enter your name)", r"$ name", r"$ (Please enter your name) name", r"$ (Please enter your name) name:str", r"$ (Please enter your name) name:int from [1|2|3|4]", r"$ name:int from [1|2|3|4]"]
+                'regex': r"^\$(\s+\((?P<prompt>.*)\))?((\s+(?P<var_name>\w+))"
+                         "(:(?P<type>\w+))?(\s+from\s+\[(?P<choices>.*)\])?)?",
+                'examples': [r"$", r"$ (Please enter your name)", r"$ name", r"$ (Please enter your name) name",
+                             r"$ (Please enter your name) name:str",
+                             r"$ (Please enter your name) name:int from [1|2|3|4]", r"$ name:int from [1|2|3|4]"]
             },
         }
     },
@@ -98,8 +102,8 @@ commands = {
         }
     },
     "conditional": {
-        'regex': r"^\\(if|else|elif)(\s+(?P<args>.*))?",
-        'type': {
+        'regex': r"^\\(if|else|elif|endif)(\s+(?P<args>.*))?",
+        'types': {
             "if": {
                 'regex': r"",
                 'examples': []
