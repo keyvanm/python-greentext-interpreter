@@ -53,15 +53,15 @@ commands = {
         'regex': r"^#+\s+.*",
         'types': {
             "chapter": {
-                'regex': r"^#\s+(?P<chapter_name>\w+)",
+                'regex': r"^#\s+(?P<chapter_name>.+)",
                 'examples': [r"# Tutorial", ]
             },
             "level": {
-                'regex': r"^##\s+(?P<level_name>\w+)",
+                'regex': r"^##\s+(?P<level_name>.+)",
                 'examples': [r"## Level 1", ]
             },
             "objective": {
-                'regex': r"^###\s+(?P<objective_name>\w+)",
+                'regex': r"^###\s+(?P<objective_name>.+)",
                 'examples': [r"### Level 1", ]
             },
         }
