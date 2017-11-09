@@ -32,8 +32,8 @@ commands = {
                 'examples': ["\end me", ]
             },
             "load": {
-                'regex': r"^\\load\s+(?P<var>\w+)\s+from\s+(?P<file_name>[\w\.]+)",
-                'examples': ["\load objects from objects.json", ]
+                'regex': r"^\\load\s+(?P<var>\w+)(\s+from\s+(?P<file_name>\w+))?",
+                'examples': ["\load objects", "\load objects from objects", ]
             },
             "delay": {
                 'regex': r"^\\delay(\s+(?P<time>\d+)(?P<unit>\w+))?",

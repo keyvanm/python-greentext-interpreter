@@ -11,9 +11,9 @@ $ input
 /*
 
 
-\load objects from objects.json
-\load characters from characters.json
-\load missions from missions.json
+\load objects from objects
+\load characters
+\load tasks
 
 \be me = @player  // start game
 ! NeckBeard Games Presents
