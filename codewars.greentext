@@ -49,4 +49,10 @@ $ <(prompt)> <var<:type>> <from [choices|delimited|by|pipe|char|>
                 > [player] OK.
                 * @asset1 requests %question1
                 $ (Please enter your answer) answer:int from [2|3]
+                \if answer == 2:
+                    > [asset1] Good job! I knew you were competent.
+                \end
+                \else
+                    > [asset1] Wow you are a fool! I will never trust you.
+                \end
 \end me
