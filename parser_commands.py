@@ -43,6 +43,10 @@ commands = {
                 "regex": r"^\\clear",
                 "examples": ["\clear", ]
             },
+            "assign": {
+                "regex": r"^\\assign(\s\$(?P<var>\w+))(:(?P<type>\w+))?\s*=\s*(?P<value>\S.*)",
+                "examples": ["\assign $var = asdf", "\assign $var:str = asdf"]
+            },
         }
     },
     "narrative_structure": {
