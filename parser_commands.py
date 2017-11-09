@@ -21,22 +21,22 @@ commands = {
         }
     },
     "commands": {
-        'regex': r"(?P<command>^\\\w+)\s(?P<args>.*)",
+        'regex': r"(?P<command>^\\\w+)\s+(?P<args>.*)",
         'types': {
             "be": {
-                'regex': r"^\\be\s(?P<me>me)\s\=\s@(?P<char_name>\w+)",
+                'regex': r"^\\be\s+(?P<me>me)\s+\=\s+@(?P<char_name>\w+)",
                 'examples': ["\be me = @player", ]
             },
             "end": {
-                'regex': r"^\\end\s(?P<me>me)",
+                'regex': r"^\\end\s+(?P<me>me)",
                 'examples': ["\end me", ]
             },
             "load": {
-                'regex': r"^\\load\s(?P<var>\w+)\sfrom\s(?P<file_name>[\w\.]+)",
+                'regex': r"^\\load\s+(?P<var>\w+)\s+from\s+(?P<file_name>[\w\.]+)",
                 'examples': ["\load objects from objects.json", ]
             },
             "delay": {
-                'regex': r"^\\delay(\s(?P<time>\d+)(?P<unit>\w+))?",
+                'regex': r"^\\delay(\s+(?P<time>\d+)(?P<unit>\w+))?",
                 'examples': ["\delay", "\delay 100ms", ]
             },
             "clear": {
@@ -44,7 +44,7 @@ commands = {
                 'examples': ["\clear", ]
             },
             "assign": {
-                'regex': r"^\\assign(\s\$(?P<var>\w+))(:(?P<type>\w+))?\s*=\s*(?P<value>\S.*)",
+                'regex': r"^\\assign(\s+\$(?P<var>\w+))(:(?P<type>\w+))?\s*=\s*(?P<value>\S.*)",
                 'examples': ["\assign $var = asdf", "\assign $var:str = asdf"]
             },
         }
@@ -53,15 +53,15 @@ commands = {
         'regex': None,
         'types': {
             "chapter": {
-                'regex': r"^#\s(?P<chapter_name>\w+)",
+                'regex': r"^#\s+(?P<chapter_name>\w+)",
                 'examples': ["# Tutorial", ]
             },
             "level": {
-                'regex': r"^##\s(?P<level_name>\w+)",
+                'regex': r"^##\s+(?P<level_name>\w+)",
                 'examples': ["## Level 1", ]
             },
             "objective": {
-                'regex': r"^###\s(?P<objective_name>\w+)",
+                'regex': r"^###\s+(?P<objective_name>\w+)",
                 'examples': ["### Level 1", ]
             },
         }
@@ -70,11 +70,11 @@ commands = {
         'regex': r"^(>|!).*",
         'types': {
             "named_dialog": {
-                'regex': r"^>(\s\[(?P<char_name>\w+)\])?(\s(?P<text>.*))?",
+                'regex': r"^>(\s+\[(?P<char_name>\w+)\])?(\s+(?P<text>.*))?",
                 'examples': [">", "> [diana]", "> lol", "> [diana] Hi!", ]
             },
             "console_output": {
-                'regex': r"^!\s(?P<text>.*)",
+                'regex': r"^!\s+(?P<text>.*)",
                 'examples': ["! Loading...", ]
             },
         }
@@ -83,7 +83,7 @@ commands = {
         'regex': r"^\$.*",
         'types': {
             "input": {
-                'regex': r"^\$(\s\((?P<prompt>.*)\))?((\s\$(?P<var>\w+))(:(?P<type>\w+))?(\sfrom\s\[(?P<choices>.*)\])?)?",
+                'regex': r"^\$(\s+\((?P<prompt>.*)\))?((\s+\$(?P<var>\w+))(:(?P<type>\w+))?(\s+from\s+\[(?P<choices>.*)\])?)?",
                 'examples': ["$", "$ (Please enter your name)", "$ $name", "$ (Please enter your name) $name", "$ (Please enter your name) $name:str", "$ (Please enter your name) $name:int from [1|2|3|4]", "$ $name:int from [1|2|3|4]"]
             },
         }
