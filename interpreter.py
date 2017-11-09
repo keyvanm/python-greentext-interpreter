@@ -3,8 +3,6 @@ import re
 
 from cmd_regex import commands
 
-gt_filename = "codewars.greentext"
-
 comment__cmds = commands["comment"]
 exec__cmds = commands["exec"]
 narrative_structure__cmds = commands["narrative_structure"]
@@ -41,7 +39,7 @@ context = {
     'tasks': {}
 }
 
-with open(gt_filename) as gt_file:
+with open("codewars.greentext") as gt_file:
     player_id = None
 
     for line in gt_file:
@@ -81,4 +79,3 @@ with open(gt_filename) as gt_file:
                     context[var_name] = value
                 else:
                     context[var_name].update(value)
-
