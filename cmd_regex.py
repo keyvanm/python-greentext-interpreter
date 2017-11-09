@@ -44,8 +44,8 @@ commands = {
                 'examples': ["\clear", ]
             },
             "assign": {
-                'regex': r"^\\assign(\s+(?P<var>(\$|@)[\.\w]+))(:(?P<type>\w+))?\s*=\s*(?P<value>\S.*)",
-                'examples': [r"\assign $var = asdf", r"\assign $var:str = asdf", r"\assign @player.name = $name", r"\assign @player.age:int = 24"]
+                'regex': r"^\\assign(\s+(?P<var_name>(@)?[\.\w]+))(:(?P<type>\w+))?\s*=\s*(?P<value>\S.*)",
+                'examples': [r"\assign var = asdf", r"\assign var:str = asdf", r"\assign @player.name = $name", r"\assign @player.age:int = 24"]
             },
         }
     },
@@ -83,8 +83,8 @@ commands = {
         'regex': r"^\$.*",
         'types': {
             "input": {
-                'regex': r"^\$(\s+\((?P<prompt>.*)\))?((\s+\$(?P<var>\w+))(:(?P<type>\w+))?(\s+from\s+\[(?P<choices>.*)\])?)?",
-                'examples': [r"$", r"$ (Please enter your name)", r"$ $name", r"$ (Please enter your name) $name", r"$ (Please enter your name) $name:str", r"$ (Please enter your name) $name:int from [1|2|3|4]", r"$ $name:int from [1|2|3|4]"]
+                'regex': r"^\$(\s+\((?P<prompt>.*)\))?((\s+(?P<var_name>\w+))(:(?P<type>\w+))?(\s+from\s+\[(?P<choices>.*)\])?)?",
+                'examples': [r"$", r"$ (Please enter your name)", r"$ name", r"$ (Please enter your name) name", r"$ (Please enter your name) name:str", r"$ (Please enter your name) name:int from [1|2|3|4]", r"$ name:int from [1|2|3|4]"]
             },
         }
     },
