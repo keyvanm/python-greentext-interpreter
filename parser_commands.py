@@ -92,8 +92,8 @@ commands = {
         'regex': r"^\*.*",
         'types': {
             "request_task": {
-                'regex': r"^\*\s+(?P<character>(\$\w+\.\w+)|@\w+)\s+requests\s+%(?P<task>\w+)",
-                'examples': ["* @aaa requests %task1", "* $npcs.npc1 requests %task1"]
+                'regex': r"^\*\s+@(?P<char_id>\w+)\s+requests\s+%(?P<task>\w+)",
+                'examples': ["* @aaa requests %task1"]
             }
         }
     }
