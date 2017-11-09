@@ -24,7 +24,7 @@ commands = {
         'regex': r"(?P<command>^\\\w+)\s+(?P<args>.*)",
         'types': {
             "be": {
-                'regex': r"^\\be\s+(?P<me>me)\s+\=\s+@(?P<char_name>\w+)",
+                'regex': r"^\\be\s+(?P<me>me)\s+\=\s+@(?P<char_id>\w+)",
                 'examples': ["\be me = @player", ]
             },
             "end": {
@@ -70,7 +70,7 @@ commands = {
         'regex': r"^(>|!).*",
         'types': {
             "dialog": {
-                'regex': r"^>(\s+\[(?P<char_name>\w+)\])?(\s+(?P<text>.*))?",
+                'regex': r"^>(\s+\[(?P<char_id>\w+)\])?(\s+(?P<text>.*))?",
                 'examples': [">", "> [diana]", "> lol", "> [diana] Hi!", ]
             },
             "console_output": {
