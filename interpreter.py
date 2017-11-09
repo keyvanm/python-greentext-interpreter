@@ -33,10 +33,12 @@ def comment_strip(line):
     return line
 
 
+chapters = []
 context = {
     'objects': {},
     'characters': {},
-    'tasks': {}
+    'tasks': {},
+    'chapters': chapters
 }
 
 with open("codewars.greentext") as gt_file:
