@@ -1,5 +1,5 @@
 commands = {
-    "comments": {
+    "comment": {
         'regex': None,
         'types': {
             "single_line": {
@@ -20,19 +20,19 @@ commands = {
             },
         }
     },
-    "exec_commands": {
+    "exec": {
         'regex': r"(?P<command>^\\\w+)(\s+(?P<args>.*))?",
         'types': {
             "be": {
-                'regex': r"^\\be\s+(?P<me>me)\s+\=\s+@(?P<char_id>\w+)",
-                'examples': [r"\be me = @player", ]
+                'regex': r"^\\be\s+(?P<me>me)\s*\=\s*@(?P<char_id>\w+)",
+                'examples': [r"\be me=@player", ]
             },
             "end": {
                 'regex': r"^\\end\s+(?P<me>me)",
                 'examples': [r"\end me", ]
             },
             "load": {
-                'regex': r"^\\load\s+(?P<var>\w+)(\s+from\s+(?P<file_name>\w+))?",
+                'regex': r"^\\load\s+(?P<var_name>\w+)(\s+from\s+(?P<file_name>\w+))?",
                 'examples': [r"\load objects", r"\load objects from objects", ]
             },
             "delay": {
