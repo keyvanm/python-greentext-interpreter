@@ -136,7 +136,12 @@ with open("codewars.greentext") as gt_file:
 
         elif re.match(dialog__cmds['regex'], code):
             pass
+
         elif re.match(input__cmds['regex'], code):
             pass
+
         elif re.match(action__cmds['regex'], code):
             pass
+
+        else:
+            raise SyntaxError
