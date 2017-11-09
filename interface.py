@@ -15,3 +15,11 @@ def echo(char, text, wait_for_next=True):
 
     if wait_for_next:
         get_next()
+
+
+def get_input(prompt, type, choices):
+    if prompt:
+        return input("$ ({})".format(prompt))
+    return input("$ ")
+
+

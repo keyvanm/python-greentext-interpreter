@@ -4,7 +4,7 @@ import importlib
 import re
 
 from cmd_regex_vars import *
-from interface import echo
+from interface import echo, get_input
 from utils import comment_strip, peek_line
 
 DEFAULT_DELAY_TIME = 0.5
@@ -144,7 +144,8 @@ with open("codewars.greentext") as gt_file:
             if dialog__match:
                 char_id = dialog__match.group('char_id')
                 text = dialog__match.group('text')
-                next_isnt_input = re.match(input__cmds['regex'], comment_strip(peek_line(gt_lines, line_no))) is None
+                next_line = comment_strip(peek_line(gt_lines, line_no).strip())
+                next_isnt_input = re.match(input__cmds['regex'], next_line) is None
                 if not char_id:
                     if not last_char_talking:
                         raise Exception
@@ -164,8 +165,9 @@ with open("codewars.greentext") as gt_file:
             if input__match:
                 prompt = input__match.group('prompt')
                 var_name = input__match.group('var_name')
-                type = input__match.group('type')
+                var_type = input__match.group('type')
                 choices = input__match.group('choices')
+                context[var_name] = get_input(prompt, var_type, choices)
 
         elif re.match(action__cmds['regex'], code):
             pass
