@@ -26,7 +26,7 @@ $ <(prompt)> <var<:type>> <from [choices|delimited|by|pipe|char|>
     ! Copyright 2017
     ! loading...
     \delay 2000ms
-    $ (Press n to continue)
+    $ (Press enter to continue)
     \clear  // clears the screen
 
     /* start tutorial chapter */
