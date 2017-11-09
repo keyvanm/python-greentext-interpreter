@@ -12,7 +12,6 @@ DEFAULT_DELAY_TIME_UNIT = "s"
 def comment_strip(line):
     comment__single_line__regex = comment__cmds['types']["single_line"]['regex']
 
-    line = line.strip()
     match = re.match(comment__single_line__regex, line)
     if match:
         code = match.group('code')
@@ -39,6 +38,7 @@ with open("codewars.greentext") as gt_file:
     player_id = None
 
     for line in gt_file:
+        line = line.strip()
         # getting rid of multi line comments
         multi_line_1line__matcher = re.compile(multi_line_1line__comment__regex)  # /* comment */
         multi_line_start__matcher = re.compile(multi_line_start__comment__regex)  # /* multi line
@@ -144,4 +144,5 @@ with open("codewars.greentext") as gt_file:
             pass
 
         else:
+            print(code)
             raise SyntaxError
